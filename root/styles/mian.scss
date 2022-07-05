@@ -1,0 +1,79 @@
+$color-principal: #f21800;
+$color-secundario: #fbfbfb;
+$color-alternativo: #000;
+$color-fondo: #FFAAAA;
+
+$titulo: 'Montserrat', sans-serif;
+/* NESTING */ 
+
+h1 {
+    font-family: $titulo;
+    font-size: 62px;
+}
+
+main {
+   width: 100vw;
+   height: 75vh;
+   background-color: $color-fondo; 
+   border: 1px solid $color-alternativo;
+}
+
+/* ARMAR CLASES PARA FLEX; SEGUN SEA ROW O COLUMN, SPACE AROUND O SPACE BETWEEN; TODOS CON ALIGN ITEMS CENTER */
+
+.button {
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.5s linear;
+    &:hover {
+        border-bottom: 3px solid #000;
+        transform: translateY(-5px);
+        cursor: pointer;
+    }
+    &-primary {
+        @extend .button;
+        background-color: $color-principal;
+    }
+    &-secondary{
+        @extend .button;
+        background-color: $color-secundario;
+        color:#000;
+    }
+    &-alternative {
+        @extend .button;
+        border: 3px solid $color-alternativo;
+    }
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    &-column {
+        @extend .flex;
+        flex-direction:column;
+        &-spacearound{
+            @extend .flex-column;
+            justify-content: space-around;
+            }
+        &-spacebetween {
+            @extend .flex-column;
+            justify-content:space-between;
+        }
+    }
+         
+    &-row {
+        @extend .flex;
+        flex-direction: row;
+        
+    
+            &-spacebetween{
+                @extend .flex-spacebetween;
+                justify-content:space-between;
+            }
+            &-spacearound{
+                @extend .flex-spacearound;
+                justify-content:space-around;
+            }
+    }
+}
